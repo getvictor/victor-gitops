@@ -29,7 +29,7 @@ jobs:
           path: fleet-gitops
 
       - name: Apply latest configuration to Fleet
-        uses: ${{ env.GITHUB_WORKSPACE }}/fleet-gitops/.github/actions
+        uses: ./fleet-gitops/.github/actions
         with:
           directory: ${{ env.GITHUB_WORKSPACE }}/fleet-gitops
           FLEET_URL: ${{ secrets.FLEET_URL }}
