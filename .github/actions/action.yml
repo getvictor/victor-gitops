@@ -1,0 +1,20 @@
+name: fleetctl-gitops
+description: Runs fleetctl gitops to apply configuration to Fleet
+
+runs:
+  using: "composite"
+  defaults:
+    run:
+      shell: bash
+  steps:
+    - name: Checkout GitOps repository
+      uses: actions/checkout@v4
+
+    - name: Install fleetctl
+      run: npm install -g fleetctl
+
+    - name: Configure fleetctl
+      run: fleetctl config set --address ${{ secrets.FLEET_URL }} --token ${{ secrets.FLEET_API_TOKEN }}
+
+    - name: Run fleetctl gitops commands
+      run: ./workflow.sh
