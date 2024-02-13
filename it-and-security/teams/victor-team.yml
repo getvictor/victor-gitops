@@ -1,0 +1,38 @@
+name: Team1 Copy
+team_settings:
+  secrets: # No secrets -- no one can enroll
+  features:
+    enable_host_users: true
+    enable_software_inventory: true
+  host_expiry_settings:
+    host_expiry_enabled: true
+    host_expiry_window: 30
+agent_options:
+  path: ../lib/agent-options.yml
+controls:
+  enable_disk_encryption: true
+  macos_updates:
+    deadline: "2023-08-11"
+    minimum_version: "13.5"
+  windows_updates:
+    deadline_days: 5
+    grace_period_days: 2
+  macos_settings:
+    custom_settings:
+      - path: ../lib/macos-password.mobileconfig
+  windows_settings:
+    custom_settings:
+      - path: ../lib/windows-screenlock.xml
+  macos_setup:
+    bootstrap_package:
+    enable_end_user_authentication:
+    macos_setup_assistant:
+  scripts:
+    - path: ../lib/remove-zoom-artifacts.script.sh
+    - path: ../lib/set-timezone.script.sh
+queries:
+  - path: ../lib/collect-usb-devices.queries.yml
+  - path: ../lib/collect-failed-login-attempts.queries.yml
+policies:
+  - path: ../lib/macos-device-health.policies.yml
+  - path: ../lib/windows-device-health.policies.yml
