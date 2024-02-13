@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Apply latest configuration to Fleet
-        uses: fleetdm/fleet-gitops@victor/update-workflow
+        uses: getvictor/fleet-gitops/.github/actions@main
         with:
           FLEET_URL: ${{ secrets.FLEET_URL }}
           FLEET_API_TOKEN: ${{ secrets.FLEET_API_TOKEN }}
