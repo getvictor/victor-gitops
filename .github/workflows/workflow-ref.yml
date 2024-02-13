@@ -19,6 +19,15 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout our repository
+        uses: actions/checkout@v4
+
+      - name: Checkout GitOps repository
+        uses: actions/checkout@v4
+        with:
+          repository: getvictor/fleet-gitops
+          path: fleet-gitops
+
       - name: Apply latest configuration to Fleet
         uses: getvictor/fleet-gitops/.github/actions@main
         with:
@@ -28,5 +37,5 @@ jobs:
           FLEET_GLOBAL_ENROLL_SECRET: ${{ secrets.FLEET_GLOBAL_ENROLL_SECRET }}
           FLEET_WORKSTATIONS_ENROLL_SECRET: ${{ secrets.FLEET_WORKSTATIONS_ENROLL_SECRET }}
           FLEET_WORKSTATIONS_CANARY_ENROLL_SECRET: ${{ secrets.FLEET_WORKSTATIONS_CANARY_ENROLL_SECRET }}
-          FLEETCTL: ../fleetctl
-          FLEET_GITOPS_DIR: ../it-and-security
+          FLEETCTL: ${{ env.GITHUB_WORKSPACE }}/fleet-gitops/fleetctl
+          FLEET_GITOPS_DIR: ${{ env.GITHUB_WORKSPACE }}/it-and-security
