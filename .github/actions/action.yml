@@ -10,7 +10,7 @@ runs:
 
     - name: Configure fleetctl
       shell: bash
-      run: fleetctl config set --address ${{ secrets.FLEET_URL }} --token ${{ secrets.FLEET_API_TOKEN }}
+      run: fleetctl config set --address ${{ env.FLEET_URL }} --token ${{ env.FLEET_API_TOKEN }}
 
     - name: Run fleetctl gitops commands
       shell: bash
