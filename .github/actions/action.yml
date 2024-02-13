@@ -7,9 +7,6 @@ runs:
     run:
       shell: bash
   steps:
-    - name: Checkout GitOps repository
-      uses: actions/checkout@v4
-
     - name: Install fleetctl
       run: npm install -g fleetctl
 
