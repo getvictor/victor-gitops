@@ -118,4 +118,3 @@ org_settings:
     databases_path: ""
   secrets: # These secrets are used to enroll hosts to the "All teams" team
     - secret: "$FLEET_GLOBAL_ENROLL_SECRET"
-    - secret: "HiMom123"
