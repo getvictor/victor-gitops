@@ -3,15 +3,15 @@ description: Runs fleetctl gitops to apply configuration to Fleet
 
 runs:
   using: "composite"
-  defaults:
-    run:
-      shell: bash
   steps:
     - name: Install fleetctl
+      shell: bash
       run: npm install -g fleetctl
 
     - name: Configure fleetctl
+      shell: bash
       run: fleetctl config set --address ${{ secrets.FLEET_URL }} --token ${{ secrets.FLEET_API_TOKEN }}
 
     - name: Run fleetctl gitops commands
+      shell: bash
       run: ./workflow.sh
