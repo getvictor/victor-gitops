@@ -26,17 +26,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: getvictor/fleet-gitops
-          path: fleet-gitops
+          path: ${{ github.workspace }}/fleet-gitops
 
       - name: Apply latest configuration to Fleet
-        uses: ./fleet-gitops/.github/actions
+        uses: ${{ github.workspace }}/fleet-gitops/.github/actions
         with:
-          directory: ${{ env.GITHUB_WORKSPACE }}/fleet-gitops
+          working-directory: ${{ github.workspace }}/fleet-gitops
           FLEET_URL: ${{ secrets.FLEET_URL }}
           FLEET_API_TOKEN: ${{ secrets.FLEET_API_TOKEN }}
           FLEET_SSO_METADATA: ${{ secrets.FLEET_SSO_METADATA }}
           FLEET_GLOBAL_ENROLL_SECRET: ${{ secrets.FLEET_GLOBAL_ENROLL_SECRET }}
           FLEET_WORKSTATIONS_ENROLL_SECRET: ${{ secrets.FLEET_WORKSTATIONS_ENROLL_SECRET }}
           FLEET_WORKSTATIONS_CANARY_ENROLL_SECRET: ${{ secrets.FLEET_WORKSTATIONS_CANARY_ENROLL_SECRET }}
-          FLEETCTL: ${{ env.GITHUB_WORKSPACE }}/fleet-gitops/fleetctl
-          FLEET_GITOPS_DIR: ${{ env.GITHUB_WORKSPACE }}/it-and-security
+          FLEETCTL: ${{ github.workspace }}/fleet-gitops/fleetctl
+          FLEET_GITOPS_DIR: ${{ github.workspace }}/it-and-security

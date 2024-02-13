@@ -2,7 +2,7 @@ name: fleetctl-gitops
 description: Runs fleetctl gitops to apply configuration to Fleet
 
 inputs:
-  directory:
+  working-directory:
     description: 'The working directory'
     default: './'
 
