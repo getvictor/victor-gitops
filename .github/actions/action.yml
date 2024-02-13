@@ -1,17 +1,25 @@
 name: fleetctl-gitops
 description: Runs fleetctl gitops to apply configuration to Fleet
 
+inputs:
+  directory:
+    description: 'The working directory'
+    default: './'
+
 runs:
   using: "composite"
   steps:
     - name: Install fleetctl
       shell: bash
+      working-directory: ${{ inputs.directory }}
       run: npm install -g fleetctl
 
     - name: Configure fleetctl
       shell: bash
+      working-directory: ${{ inputs.directory }}
       run: fleetctl config set --address ${{ env.FLEET_URL }} --token ${{ env.FLEET_API_TOKEN }}
 
     - name: Run fleetctl gitops commands
       shell: bash
+      working-directory: ${{ inputs.directory }}
       run: ./workflow.sh
