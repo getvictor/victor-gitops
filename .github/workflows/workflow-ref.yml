@@ -26,10 +26,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: getvictor/fleet-gitops
-          path: ${{ github.workspace }}/fleet-gitops
+          path: fleet-gitops
 
       - name: Apply latest configuration to Fleet
-        uses: ${{ github.workspace }}/fleet-gitops/.github/actions
+        uses: ./fleet-gitops/.github/actions
         with:
           working-directory: ${{ github.workspace }}/fleet-gitops
           FLEET_URL: ${{ secrets.FLEET_URL }}
