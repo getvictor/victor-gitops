@@ -40,5 +40,5 @@ jobs:
           FLEET_GLOBAL_ENROLL_SECRET: ${{ secrets.FLEET_GLOBAL_ENROLL_SECRET }}
           FLEET_WORKSTATIONS_ENROLL_SECRET: ${{ secrets.FLEET_WORKSTATIONS_ENROLL_SECRET }}
           FLEET_WORKSTATIONS_CANARY_ENROLL_SECRET: ${{ secrets.FLEET_WORKSTATIONS_CANARY_ENROLL_SECRET }}
-          FLEETCTL: ${{ github.workspace }}/fleet-gitops/fleetctl
+          FLEETCTL: ${{ github.workspace }}/fleetctl
           FLEET_GITOPS_DIR: ${{ github.workspace }}/it-and-security
