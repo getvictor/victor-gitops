@@ -25,7 +25,7 @@ jobs:
       - name: Checkout GitOps repository
         uses: actions/checkout@v4
         with:
-          repository: getvictor/fleet-gitops
+          repository: fleetdm/fleet-gitops@victor/update-workflow
           path: fleet-gitops
 
       - name: Apply latest configuration to Fleet
