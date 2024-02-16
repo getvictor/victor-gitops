@@ -81,7 +81,7 @@ org_settings:
         enable_software_vulnerabilities: false
         project_key: JIR
         url: https://fleetdm.atlassian.net
-        username: reed@fleetdm.com
+        username: $JIRA_USERNAME
     zendesk: []
   mdm:
     apple_bm_default_team: ""
