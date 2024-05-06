@@ -3,7 +3,7 @@ description: Runs fleetctl gitops to apply configuration to Fleet
 
 inputs:
   working-directory:
-    description: 'The working directory'
+    description: 'The working directory, which should be the root of the fleet-gitops repository.'
     default: './'
 
 runs:
@@ -22,4 +22,4 @@ runs:
     - name: Run fleetctl gitops commands
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: ./workflow.sh
+      run: ./gitops.sh
