@@ -67,7 +67,7 @@ org_settings:
   sso_settings:
     enable_jit_provisioning: false
     enable_jit_role_sync: false
-    enable_sso: true
+    enable_sso: false
     enable_sso_idp_login: false
     entity_id: https://saml.example.com/entityid
     idp_image_url: ""
