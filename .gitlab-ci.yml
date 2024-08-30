@@ -1,0 +1,20 @@
+default:
+  tags:
+    - saas-linux-small-amd64
+
+fleet-gitops:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always
+    - when: never
+  script:
+    - FLEET_VERSION="$(curl "$FLEET_URL/api/v1/fleet/version" --header "Authorization: Bearer $FLEET_API_TOKEN" --fail --silent | jq --raw-output '.version')"
+    - >
+      if [[ -n "$FLEET_VERSION" ]] ; then \
+        npm install -g "fleetctl@$FLEET_VERSION" || npm install -g fleetctl \
+      else \
+        echo "Failed to get Fleet version from $FLEET_URL, installing latest version of fleetctl" \
+      npm install -g fleetctl \
+      fi
+    - fleetctl config set --address $FLEET_URL --token $FLEET_API_TOKEN
+    - ./gitops.sh
